@@ -3,8 +3,8 @@
 Project on PythonAnywhere:
 
 Link: https://stanislauholub.pythonanywhere.com <br />
-Username: Admin <br />
-Password: Password <br />
+Username: admin <br />
+Password: password <br />
 
 For this project, I decided to work again with Flask, as it is ideal for creating such application as
 a Book Catalog in my opinion. Initially, I made this application working in console, but it was
