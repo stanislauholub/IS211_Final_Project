@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp | Book Catalogue</title>
+</head>
+<style>
+    body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
+</style>
+
+<body>
+
+    <form method="POST" action='/signup'>
+        <h2>SignUp</h2>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="name">Username:</label><br>
+            <input type="text" id="name" name="name"><br>
+        </div>
+        <br>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+        </div>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <label for="name"><font color="red">{{value}}</font></label><br>
+        </div>
+        <br>
+        <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+            <input type="submit" value="SignUp">
+        </div>
+    </form>
+</body>
+
+</html>

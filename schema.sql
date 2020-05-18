@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS login;
+CREATE TABLE IF NOT EXISTS result;
+
+CREATE TABLE IF NOT EXISTS login (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS result (
+    res_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INT,
+    Title VARCHAR(20),
+    Authors VARCHAR(50),
+    PageCount VARCHAR(20),
+    MaturityRatings	VARCHAR(20),
+    Thumbnails VARCHAR(150),
+    FOREIGN KEY(id) REFERENCES login(id)
+);

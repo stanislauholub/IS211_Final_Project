@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Book Catalogue</title>
+    <style>
+        * {
+      box-sizing: border-box;
+    }
+    .column {
+      float: left;
+      width: 20%;
+    }
+    .column1 {
+      float: right;
+      width: 70%;
+    }
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <form method="POST" action='/isbnsearch'>
+                <label for="ISBN">ISBN: </label>
+                <input type="text" id="ISBN" name="ISBN"><br>
+                <label for="ISBN"><font color="red">{{isbnerror}}</font></label><br>
+                <input type="submit" value="Search">
+            </form>
+            <br>
+            <br>
+            <form method="POST" action="/titlesearch">
+                <label for="title">Title: </label>
+                <input type="text" id="title" name="title"><br>
+                <label for="title"><font color="red">{{titleerror}}</font></label><br>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="column1">
+            <div>
+                <h2>Saved Books:</h2>
+                <table style="width:100%" method="GET" action="/">
+                    <tr>
+                        <th>Title</th>
+                        <th>Authors</th>
+                        <th>Page Count</th>
+                        <th>Maturity Ratings</th>
+                        <th>Thumbnail</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for item in data1 %}
+                    <tr>
+                        <td>{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td><a href={{item[6]}} target="_blank">Link</a></td>
+                        <td>
+                            <form action="/deletebook" method="post">
+                                <input type="hidden" name="res_id" value={{item[0]}}>
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

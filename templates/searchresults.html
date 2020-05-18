@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results | Book Catalogue</title>
+    <style>
+        table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 5px;
+      text-align: left;
+    }
+    </style>
+</head>
+
+<body>
+    <table style="width:100%" method="GET" action="/">
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Page Count</th>
+            <th>Maturity Ratings</th>
+            <th>Thumbnail</th>
+            <th>Action</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td><a href={{item[4]}} target="_blank">Link</a></td>
+            <td>
+                <form action="/savedata" method="post">
+                    <input type="hidden" name="title" value="{{item[0]}}">
+                    <input type="hidden" name="author" value="{{item[1]}}">
+                    <input type="hidden" name="pagecount" value="{{item[2]}}">
+                    <input type="hidden" name="maturityratings" value="{{item[3]}}">
+                    <input type="hidden" name="thumbnails" value="{{item[4]}}">
+                    <input type="submit" value="Save" class="btn btn-danger">
+                </form>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</body>
+
+</html>
